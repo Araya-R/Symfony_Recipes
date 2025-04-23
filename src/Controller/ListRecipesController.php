@@ -150,8 +150,8 @@ class ListRecipesController extends AbstractController
         ];
 
         //trier les recettes par ordre décroissant d'ID
-        //$a et $b représentent 2 recettes du tableau 
-        //on place les recettes qui ont ID le plus grand se retrouvent en premieres
+        //$a et $b représentent 2 recettes du tableau/on les compare
+        //on place les recettes qui ont ID le plus grand en première
         usort($recipes, function ($a, $b){
             return $b['id'] - $a['id'];
         });
