@@ -1,0 +1,24 @@
+<html>
+	<body>
+		<main>
+			<h2>Les 3 dernières recettes:</h2>
+
+			{% for recipe in recipes %}
+				<h3>{{ recipe.title}}</h3>
+				<img src="{{ recipe.image}}">
+				<p>{{ recipe.description }}</p>
+
+				<p>Les ingrédients :</p>
+				<ul>
+					{% for ingredient in recipe.ingredients %}
+						<li>{{ ingredient }}</li>
+					{% endfor %}
+				</ul>
+
+				<p>{{ recipe.createdAt | date ('y-m-d') }}</p>
+				<p>{{ recipe.category }}</p>
+			{% endfor %}
+
+		</main>
+	</body>
+</html>
