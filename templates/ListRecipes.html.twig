@@ -1,24 +1,26 @@
-<html>
-	<body>
-		<main>
-			<h2>Les 3 dernières recettes:</h2>
+{% include "partial/_header.html.twig" %}
 
-			{% for recipe in recipes %}
-				<h3>{{ recipe.title}}</h3>
-				<img src="{{ recipe.image}}">
-				<p>{{ recipe.description }}</p>
+<main>
+	<h3>Toutes mes recettes:</h3>
 
-				<p>Les ingrédients :</p>
-				<ul>
-					{% for ingredient in recipe.ingredients %}
-						<li>{{ ingredient }}</li>
-					{% endfor %}
-				</ul>
+	{% for recipe in recipes %}
+		<div class="recipe">
+			<h3>{{ recipe.title}}</h3>
+			<img src="{{ recipe.image}}" >
+			<p>{{ recipe.description }}</p>
 
-				<p>{{ recipe.createdAt | date ('y-m-d') }}</p>
-				<p>{{ recipe.category }}</p>
-			{% endfor %}
+			<p>Les ingrédients :</p>
+			<ul>
+				{% for ingredient in recipe.ingredients %}
+					<li>{{ ingredient }}</li>
+				{% endfor %}
+			</ul>
 
-		</main>
-	</body>
-</html>
+			<p class="recipe-date">{{ recipe.createdAt | date ('y-m-d') }}</p>
+			<p class="recipe-category">{{ recipe.category }}</p>
+
+		</div>
+	{% endfor %}
+
+	{% include "partial/_footer.html.twig" %}
+</main></body></html>

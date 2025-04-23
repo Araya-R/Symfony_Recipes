@@ -1,15 +1,28 @@
 <html>
-	<body>
-		<header>
-			<h1>Les meilleures recettes du monde !</h1>
+	{% include "partial/_header.html.twig" %}
 
-			<nav>
+	<main class="container">
+		<h3>Les 3 dernières recettes:</h3>
+
+		{% for recipe in recipes %}
+			<div class="recipe">
+				<h3>{{ recipe.title}}</h3>
+				<img src="{{ recipe.image}}" >
+				<p>{{ recipe.description }}</p>
+
+				<p>Les ingrédients :</p>
 				<ul>
-					<li><a href="http://localhost:8888/symfony_recipes/public/">Home</a></li>
-					<li> <a href="http://localhost:8888/symfony_recipes/public/ListRecipes">Liste des recettes</a></li>
+					{% for ingredient in recipe.ingredients %}
+						<li>{{ ingredient }}</li>
+					{% endfor %}
 				</ul>
-			</nav>
-            
-		</header>
-	</body>
+
+				<p class="recipe-date">{{ recipe.createdAt | date ('y-m-d') }}</p>
+				<p class="recipe-category">{{ recipe.category }}</p>
+			</div>
+		{% endfor %}
+	</main>
+
+		{% include "partial/_footer.html.twig" %}
 </html>
+

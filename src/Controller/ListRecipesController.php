@@ -149,19 +149,8 @@ class ListRecipesController extends AbstractController
 
         ];
 
-        //trier les recettes par ordre décroissant d'ID
-        //$a et $b représentent 2 recettes du tableau/on les compare
-        //on place les recettes qui ont ID le plus grand en première
-        usort($recipes, function ($a, $b){
-            return $b['id'] - $a['id'];
-        });
-
-        //array_slice = prendre une partie du tableau en lui indiquant un point de départ (index 0) 
-        //et un point d'arrêt ici c'est l'index 3
-        //on les stocke ces recettes dans une nouvelle variable $lastestRecipes
-        $lastestRecipes=array_slice($recipes, 0, 3);
-
         //on passe donc cette variable dans le paramètre
-        return $this->render('ListRecipes.html.twig', ['recipes' => $lastestRecipes]);
+        return $this->render('ListRecipes.html.twig', ['recipes' => $recipes]);
     }
 }
+
